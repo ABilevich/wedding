@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#433f27" />
+  <meta name="description" content="Save the date de Natasha y Andres. 29 de enero de 2027." />
+  <link rel="icon" type="image/svg+xml" href="./assets/final-revision/monogram.svg" />
+  <link rel="stylesheet" href="./styles.css?v=cormorant-light-1" />
+  <link rel="stylesheet" href="./landscape.css?v=cormorant-light-1" media="(min-width: 900px) and (orientation: landscape)" />
+  <link rel="preload" href="./assets/fonts/parisienne-regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="./assets/fonts/cormorant-garamond-light.ttf" as="font" type="font/ttf" crossorigin />
+  <title>Save the Date · Natasha y Andres</title>
+</head>
+<body>
+  <main>
+    <section class="reveal" aria-label="Invitación de Natasha y Andres">
+      <div class="stage">
+        <div class="ambient-background" aria-hidden="true">
+          <span class="ambient-night-tint"></span>
+          <img class="estate estate-day" src="./assets/sunset-estate.png" alt="" />
+          <img class="estate estate-night" src="./assets/steps/night-estate.png" alt="" />
+        </div>
+        <div class="composition">
+          <img class="brand-mark" src="./assets/final-revision/monogram.svg" width="105" height="64.698" alt="Natasha y Andres" />
+          <div class="invitation-layout">
+            <div class="header-initial">
+              <h1 class="invitation-names">Natasha <span class="name-ampersand">&amp;</span> Andres</h1>
+              <div class="invitation-divider" aria-hidden="true"><img src="./assets/steps/heart.svg" width="9" height="8" alt="" /></div>
+              <p class="invitation-subtitle">Has recibido una invitación especial</p>
+            </div>
+            <div class="header-final" aria-hidden="true"><h2 class="wedding-title">Our Wedding</h2><div class="invitation-divider" aria-hidden="true"><img src="./assets/steps/heart.svg" width="9" height="8" alt="" /></div><p class="invitation-subtitle">Próximamente compartiremos más detalles</p></div>
+            <div class="envelope-art" aria-hidden="true">
+              <div class="envelope-body">
+                <img class="envelope-back piece" src="./assets/white/envelope-back.png" alt="" />
+                <img class="flap-inner piece" src="./assets/white/flap-outside.png" alt="" />
+                <div class="liner piece"><img src="./assets/steps/liner-pattern.png" alt="" /></div>
+              </div>
+              <div class="contents-window">
+                <div class="photo-top polaroid piece"><div class="polaroid-photo"><img src="./assets/open-revision/photo-top.png" alt="" /></div></div>
+                <img class="photo-left piece" src="./assets/figma/polaroid-left.png" alt="" />
+                <div class="invitation-card piece"><img src="./assets/open-revision/lettering.svg" alt="" /></div>
+                <img class="cat piece" src="./assets/cat.png" alt="" />
+                <div class="date-card piece"><img class="date-paper" src="./assets/final-revision/date-card-blank.png" alt="" /><p class="date-label">29·01·2027</p></div>
+                <img class="flowers-left piece" src="./assets/open-revision/flowers-left.png" alt="" />
+                <img class="flowers-right piece" src="./assets/open-revision/flowers-right.png" alt="" />
+              </div>
+              <div class="pockets piece">
+                <div class="pocket-left"><img class="pocket-paper" src="./assets/white/envelope-back.png" alt="" /></div>
+                <div class="pocket-right"><img class="pocket-paper" src="./assets/white/envelope-back.png" alt="" /></div>
+                <img class="pocket-front" src="./assets/white/pocket-front.png" alt="" />
+                <img class="pocket-front pocket-front-open" src="./assets/white/pocket-front.png" alt="" />
+              </div>
+              <img class="flap-outer piece" src="./assets/white/flap-outside.png" alt="" />
+              <img class="seal piece" src="./assets/final-revision/seal.png" alt="" />
+            </div>
+            <button class="open-invitation" type="button" aria-label="Desliza para descubrirlo. Abrir invitación" aria-expanded="false"><span>Desliza para descubrirlo</span><img src="./assets/steps/scroll-arrow.svg" width="16" height="16" alt="" /></button>
+          </div>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" id="invitation-status"></p>
+        <noscript><p class="fallback">Save the Date · Natasha y Andres · 29 de enero de 2027</p></noscript>
+      </div>
+    </section>
+  </main>
+  <script src="./script.js?v=no-credit-1"></script>
+  <script src="./landscape.js?v=no-credit-1"></script>
+</body>
+</html>

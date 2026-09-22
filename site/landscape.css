@@ -1,0 +1,18 @@
+/* Isolated horizontal variant. Portrait styles remain in styles.css unchanged. */
+@media (min-width: 900px) and (orientation: landscape) {
+  .reveal { height: 320svh; }
+  .composition { width: 1728px; height: 1117px; }
+  .brand-mark { left: 775.4515px; top: 36px; width: 175.097px; height: 142.0005px; }
+  .header-initial, .header-final { left: 222px; top: 525.75px; width: 516px; height: 100px; }
+  .invitation-names { left: 0; right: 0; font-size: 72px; line-height: 35px; }
+  .name-ampersand { font-size: 45px; }
+  .header-initial .invitation-divider, .header-final .invitation-divider { top: 59px; height: 8px; }
+  .header-initial .invitation-subtitle, .header-final .invitation-subtitle { top: 91px; font-size: 32px; line-height: 36px; }
+  .wedding-title { font-size: 72px; line-height: 35px; }
+  .open-invitation { left: 315px; top: 738px; width: 330px; font-size: 24px; line-height: 18px; }
+  .open-invitation img { width: 19.186px; height: 18.5px; }
+  .photo-top { box-shadow: 0 11.172px 22.345px -5.586px rgba(12,12,13,.4); }
+}
+@media (min-width: 900px) and (orientation: landscape) and (prefers-reduced-motion: reduce) {
+  .reveal { height: 100svh; }
+}

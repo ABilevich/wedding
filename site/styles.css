@@ -1,0 +1,84 @@
+@font-face { font-family: "Cormorant Garamond"; src: url('./assets/fonts/cormorant-garamond-light-italic.ttf') format('truetype'); font-style: italic; font-weight: 300; font-display: swap; }
+@font-face { font-family: "Parisienne"; src: url('./assets/fonts/parisienne-regular.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url('./assets/fonts/cormorant-garamond-light.ttf') format('truetype'); font-style: normal; font-weight: 300; font-display: swap; }
+:root { --night: 0; --scene-scale: 1; color: #fff; background: #5d5a44; font-family: Georgia, serif; }
+* { box-sizing: border-box; }
+/* Scroll drives the timeline only; neither rubber-banding nor scroll anchoring
+   should move the scene as its animated elements change size and position. */
+html, body { overscroll-behavior-y: none; overflow-anchor: none; }
+body { margin: 0; }
+img { display: block; user-select: none; -webkit-user-drag: none; }
+.reveal { height: 310svh; }
+.stage { position: fixed; inset: 0 0 auto; height: 100svh; overflow: hidden; isolation: isolate; background: #5d5a44; }
+.ambient-background { position: absolute; inset: 0; overflow: hidden; background: #5d5a44; }
+.ambient-night-tint { position: absolute; inset: 0; background: #433f27; opacity: var(--night); }
+.estate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.estate-day { opacity: calc(.2 * (1 - var(--night))); }
+.estate-night { opacity: calc(.2 * var(--night)); }
+/* The 402 × 874 storyboard is the coordinate system for all three frames. */
+.composition { position: absolute; left: 50%; top: 50%; width: 402px; height: 874px; overflow: hidden; transform: translate(-50%, -50%) scale(var(--scene-scale)); }
+.brand-mark { position: absolute; z-index: 50; left: 147.6769px; top: 36px; width: 98.6462px; height: 80px; }
+.header-initial, .header-final { position: absolute; z-index: 50; left: 41px; width: 320px; margin: 0; pointer-events: none; }
+/* Export bounds include the original glyphs extending outside the text boxes. */
+.header-initial { left: 36px; width: 330px; top: 224.219px; height: 86px; }
+.invitation-names { position: absolute; left: -20px; right: -20px; top: 0; margin: 0; color: inherit; text-align: center; white-space: nowrap; font: 400 45px/19px "Parisienne", cursive; }
+.name-ampersand { font-size: 27.257px; }
+.invitation-divider { position: absolute; top: 45px; left: 0; width: 100%; height: 11.25px; display: flex; align-items: center; gap: 12px; }
+.invitation-divider::before, .invitation-divider::after { content: ""; flex: 1; border-top: .5px solid currentColor; }
+.invitation-divider img { width: 9px; height: 8px; flex: 0 0 9px; }
+.invitation-subtitle { position: absolute; top: 77px; left: -10px; right: -10px; height: 9px; margin: 0; display: flex; justify-content: center; align-items: center; white-space: nowrap; font: 300 18px/20.25px "Cormorant Garamond", Georgia, serif; }
+.header-final { top: 187px; opacity: 0; }
+.wedding-title { margin: 0; text-align: center; font: 400 42.101px/19px "Parisienne", cursive; }
+.header-final .invitation-divider { top: 43px; }
+.header-final .invitation-subtitle { top: 75px; }
+.envelope-art, .contents-window { position: absolute; inset: 0; pointer-events: none; }
+.piece { position: absolute; transform-origin: center; }
+.envelope-back { z-index: 1; border-radius: 0 0 var(--envelope-radius, 18px) var(--envelope-radius, 18px); }
+.flap-inner { z-index: 2; transform: scaleY(-1); }
+.liner { z-index: 3; overflow: hidden; }
+.liner img { position: absolute; width: 107.3%; left: -3.65%; object-fit: cover; }
+.contents-window { z-index: 10; overflow: hidden; }
+.photo-top { z-index: 1; box-shadow: 0 7.644px 15.288px -3.822px rgba(12,12,13,.4); }
+.polaroid { background: white; overflow: hidden; }
+.polaroid-photo { position: absolute; left: 6.876%; top: 6.332%; width: 86.247%; aspect-ratio: 1; overflow: hidden; }
+.polaroid-photo img { width: 100%; height: 100%; object-fit: cover; }
+.polaroid-photo::after { content: ""; position: absolute; inset: 0; box-shadow: inset .956px .956px .956px rgba(0,0,0,.25); }
+.photo-left { z-index: 2; }
+.invitation-card { z-index: 3; background: white; border-radius: 8.46% / 13.05%; }
+.invitation-card img { position: absolute; left: 8.4606%; top: 17.4039%; width: 83.151%; height: 65.1919%; }
+.date-card { z-index: 4; container-type: inline-size; }
+.date-paper { position: absolute; width: 86.194%; height: 86.194%; left: 6.903%; top: 6.903%; transform: rotate(10.1215deg); }
+.date-label { position: absolute; left: 50.599%; top: 44.124%; margin: 0; white-space: nowrap; color: white; font: italic 300 11.565cqw/1 "Cormorant Garamond", Georgia, serif; transform: translate(-50%, -50%) rotate(9.72deg); }
+.cat { z-index: 7; object-fit: contain; }
+.flowers-left { z-index: 5; }
+.flowers-right { z-index: 6; }
+.pockets { z-index: 20; overflow: hidden; border-radius: 0 0 var(--envelope-radius, 18px) var(--envelope-radius, 18px); }
+.pockets img, .pocket-left, .pocket-right { position: absolute; }
+.pocket-left { left: .15625%; top: 0; width: 49.6875%; height: 92.6267%; }
+.pocket-right { left: 50%; top: 0; width: 49.6875%; height: 92.6267%; }
+/* Use the supplied white paper within the original side-piece silhouettes.
+   The source artwork and its alpha masks remain unmodified. */
+.pocket-left, .pocket-right { overflow: hidden; mask-size: 100% 100%; mask-repeat: no-repeat; }
+/* Keep the paper image’s rounded bottom outside the triangular side mask.
+   Only the envelope’s bottom front should define the visible corner. */
+.pockets .pocket-paper { left: 0; top: 0; width: 100%; height: 112%; max-width: none; }
+.pocket-left { mask-image: url('./assets/steps/pocket-left.png'); }
+.pocket-right { mask-image: url('./assets/steps/pocket-right.png'); }
+.pocket-front { left: 0; bottom: 0; width: 100%; height: 48.3871%; }
+.flap-outer { z-index: 30; }
+.seal { z-index: 40; }
+.open-invitation { position: absolute; z-index: 50; top: 658.031px; left: 41px; width: 320px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; gap: 8px; font: 300 18px/20.25px "Cormorant Garamond", Georgia, serif; border: 0; background: transparent; cursor: pointer; color: white; }
+.open-invitation img { width: 16px; height: 16px; flex-shrink: 0; }
+.open-invitation:focus-visible { outline: 1px solid white; outline-offset: 4px; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.fallback { position: absolute; bottom: 20px; width: 100%; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .reveal { height: 100svh; } }
+
+/* Shadows follow the alpha silhouettes, preserving the original paper artwork. */
+.envelope-body { position: absolute; inset: 0; z-index: 1; filter: drop-shadow(var(--shell-shadow)); }
+.flap-outer { filter: drop-shadow(var(--flap-shadow)); }
+/* Shadow only one of the overlapping front exports to avoid doubling it. */
+.pocket-front:not(.pocket-front-open) { filter: drop-shadow(var(--front-shadow)); }
+
+/* The horizontal variant groups these layers; portrait keeps its original layout. */
+.invitation-layout { display: contents; }
