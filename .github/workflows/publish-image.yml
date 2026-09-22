@@ -40,7 +40,12 @@ jobs:
           docker run --rm wedding-smoke:local nginx -t
           docker run -d --name wedding-smoke -p 127.0.0.1:8080:8080 wedding-smoke:local
           trap 'docker logs wedding-smoke; docker rm -f wedding-smoke' EXIT
-          curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 1 http://127.0.0.1:8080/healthz
+          # Docker can accept a connection before Nginx is ready, then reset it (curl 56).
+          # Retry startup errors with a time limit; fail the job if readiness never succeeds.
+          curl --fail --silent --show-error \
+            --retry 20 --retry-all-errors --retry-delay 1 \
+            --connect-timeout 2 --max-time 3 --retry-max-time 60 \
+            http://127.0.0.1:8080/healthz
           python3 - <<'PY'
           from pathlib import Path
           from urllib.request import urlopen
